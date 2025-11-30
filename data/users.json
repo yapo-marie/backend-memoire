@@ -1,0 +1,36 @@
+[
+  {
+    "id": "daf3b011-dbfd-4904-b97c-cd20e8eabd83",
+    "name": "Emilie Aubert",
+    "email": "admin@locatus.com",
+    "passwordHash": "$2b$10$qwh.46iKQRWOtTlXgMvZ7.ODkF/Fb7IT8pWhbMIwg/EIZB0oO/udG",
+    "role": "admin",
+    "phone": "+33 6 88 77 11 22",
+    "createdAt": "2025-11-11T01:34:37.832Z"
+  },
+  {
+    "id": "4b8d22f5-85c1-4a32-b9ae-13405a488a79",
+    "name": "Bobbie Brock",
+    "email": "melvinphyllisakou@gmail.com",
+    "passwordHash": "$2b$10$8JwbcpPvxa/E1syvILpJyuBAbUULmabTANFTnhQ0mU21qS35GLHhy",
+    "role": "user",
+    "createdAt": "2025-11-11T02:10:18.723Z"
+  },
+  {
+    "id": "aeb35d3d-3f19-4f9a-807f-8046d0c0aa16",
+    "name": "Owner One",
+    "email": "owner@example.com",
+    "passwordHash": "$2b$10$4vPn9Fv5T5xirH1tqTPQF.aEYKiCu3R1TGjMU/U/RJ4Wrx3JQ/kHu",
+    "role": "user",
+    "createdAt": "2025-11-12T09:33:27.963Z"
+  },
+  {
+    "id": "790531e7-3d19-4af8-bb73-9523ec3a0f65",
+    "name": "Emilie Aubert",
+    "email": "admin@locatus.com",
+    "passwordHash": "$2b$10$efKPaxSEgnPydoZRI53nPu33GaRASO2TbWMqzceLACOSw0d2Mp3U.",
+    "role": "admin",
+    "phone": "+33 6 88 77 11 22",
+    "createdAt": "2025-11-18T09:25:44.660Z"
+  }
+]

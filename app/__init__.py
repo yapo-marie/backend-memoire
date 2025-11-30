@@ -1,0 +1,3 @@
+"""
+Locatus FastAPI application package.
+"""
