@@ -1,7 +1,8 @@
 import functools
 from typing import List, Optional
 
-from pydantic import AnyHttpUrl, BaseModel, BaseSettings, Field, validator
+from pydantic import AnyHttpUrl, BaseModel, Field, field_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 def _split_csv(value: Optional[str]) -> List[str]:
@@ -11,9 +12,7 @@ def _split_csv(value: Optional[str]) -> List[str]:
 
 
 class Settings(BaseSettings):
-  class Config:
-    env_file = ".env"
-    extra = "ignore"
+  model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
   port: int = Field(4000, alias="PORT")
   jwt_secret: str = Field("locatus_dev_secret", alias="JWT_SECRET")
@@ -42,15 +41,15 @@ class Settings(BaseSettings):
 
   allowed_origins: List[str] = Field(default_factory=list)
 
-  @validator("allowed_origins", pre=True, always=True)
+  @field_validator("allowed_origins", mode="before")
   @classmethod
-  def fill_origins(cls, value, values):
+  def fill_origins(cls, value, info):
     if value:
       return value
-    client_origin = values.get("client_origin") or "http://localhost:3000"
+    client_origin = info.data.get("client_origin") or "http://localhost:3000"
     return _split_csv(client_origin)
 
-  @validator("smtp_secure", pre=True)
+  @field_validator("smtp_secure", mode="before")
   @classmethod
   def normalize_bool(cls, value):
     if value is None:

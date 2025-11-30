@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr, Field, validator
+from pydantic import BaseModel, EmailStr, Field, field_validator
 
 
 class TenantBase(BaseModel):
@@ -14,7 +14,7 @@ class TenantBase(BaseModel):
   entryDate: str
   paymentMonths: int = 1
 
-  @validator("paymentMonths")
+  @field_validator("paymentMonths")
   @classmethod
   def validate_months(cls, value: int) -> int:
     return max(1, min(12, int(value)))
@@ -34,7 +34,7 @@ class TenantUpdate(BaseModel):
   entryDate: Optional[str | None] = None
   paymentMonths: Optional[int] = None
 
-  @validator("paymentMonths")
+  @field_validator("paymentMonths")
   @classmethod
   def validate_months(cls, value: Optional[int]) -> Optional[int]:
     if value is None:

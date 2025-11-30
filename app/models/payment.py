@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr, validator
+from pydantic import BaseModel, EmailStr, field_validator
 
 
 class CheckoutRequest(BaseModel):
@@ -16,7 +16,7 @@ class CheckoutRequest(BaseModel):
   successUrl: Optional[str] = None
   cancelUrl: Optional[str] = None
 
-  @validator("paymentMonths")
+  @field_validator("paymentMonths")
   @classmethod
   def validate_months(cls, value: int) -> int:
     return max(1, min(12, int(value)))
@@ -28,7 +28,7 @@ class PaymentHistoryQuery(BaseModel):
   tenantId: Optional[str] = None
   limit: int = 20
 
-  @validator("limit")
+  @field_validator("limit")
   @classmethod
   def cap_limit(cls, value: int) -> int:
     return max(1, min(50, int(value)))
