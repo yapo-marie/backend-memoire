@@ -1,0 +1,11 @@
+[build]
+  command = "bash netlify-build.sh"
+  publish = "."
+
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
